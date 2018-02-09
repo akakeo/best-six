@@ -29,18 +29,12 @@ namespace bestsixapp
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
-            Rectangle rect = new Rectangle();
-            rect.Fill = new SolidColorBrush(Colors.AntiqueWhite);
-            rect.Stroke = new SolidColorBrush(Colors.Black);
-            rect.Height = this.Height/10;
-            rect.Width = this.Width/10;
-            rect.StrokeThickness = 2;
-            // here
-           
+            //create room object
+            Room room = new Room(this.Width,this.Height);
+            var rect = (Rectangle)room.makeRoom();
             rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
             rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
             rect.MouseMove += rect_MouseMove;
-            
             RoomCanvas.Children.Add(rect);
         }
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,8 +59,8 @@ namespace bestsixapp
             var mousePos = e.GetPosition(RoomCanvas);
 
             // center the rect on the mouse
-                double left = mousePos.X - (rect.ActualWidth / 2);
-                double top = mousePos.Y - (rect.ActualHeight / 2);
+            double left = mousePos.X - (rect.ActualWidth / 2);
+            double top = mousePos.Y - (rect.ActualHeight / 2);
             if (isEdit)
             {
                 if (left < 0) left = 0;
