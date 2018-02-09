@@ -28,6 +28,8 @@ namespace bestsixapp
             Rectangle rect = new Rectangle();
             rect.Fill = new SolidColorBrush(Colors.AntiqueWhite);
             rect.Stroke = new SolidColorBrush(Colors.Black);
+            rect.Width = width;
+            rect.Height = height;
             rect.StrokeThickness = 2;
             return rect;
         }

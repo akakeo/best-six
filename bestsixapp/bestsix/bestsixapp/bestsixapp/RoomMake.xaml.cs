@@ -20,7 +20,7 @@ namespace bestsixapp
     public partial class RoomMake : Window
     {
         private bool isEdit = false;
-        
+        List<object> Rooms = new List<object>();
         public RoomMake()
         {
             InitializeComponent();
@@ -30,12 +30,22 @@ namespace bestsixapp
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
             //create room object
-            Room room = new Room(this.Width,this.Height);
-            var rect = (Rectangle)room.makeRoom();
-            rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
-            rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
-            rect.MouseMove += rect_MouseMove;
-            RoomCanvas.Children.Add(rect);
+            if (isEdit)
+            {
+                //create object
+                Room room = new Room(this.Width, this.Height);
+                //cast object
+                var rect = (Rectangle)room.makeRoom();
+                //tract mouse events
+                rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
+                rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.MouseMove += rect_MouseMove;
+                //add room object to room list
+                Rooms.Add(rect);
+                //add object to canvas
+                RoomCanvas.Children.Add(rect);
+                
+            }
         }
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -74,13 +84,14 @@ namespace bestsixapp
         {
             if (EditRoomButton.Content.ToString() == "Edit Rooms")
             {
-
+                //Change button to finish and enable edit
                 EditRoomButton.Padding = new Thickness(16.7);
                 EditRoomButton.Content = "Finish";
                 isEdit = true;
             }
             else
             {
+                //change button to edit rooms and disable edit
                 EditRoomButton.Content = "Edit Rooms";
                 EditRoomButton.Padding = new Thickness(2);
                 isEdit = false;
