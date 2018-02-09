@@ -11,18 +11,13 @@
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"  />
+                <ColumnDefinition MaxWidth="20"  />
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="20"  />
+                <ColumnDefinition MaxWidth="20"  />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -31,38 +26,53 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="185" />
             </Grid.RowDefinitions>
 
-            <!--ROW 1-->
+            <!--COL 1-->
             <Label   Grid.Column="1" Grid.Row="1" Content="First Name:" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <TextBox Grid.Column="2" Grid.Row="1" x:Name="TextBoxFName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <Label   Grid.Column="3" Grid.Row="1" Content="Last Name:"  HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <TextBox Grid.Column="4" Grid.Row="1" x:Name="TextBoxLName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" Grid.ColumnSpan="2"/>
-            <Label   Grid.Column="6" Grid.Row="1" Content="License #"   HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <TextBox Grid.Column="7" Grid.Row="1" x:Name="TextBoxID"    HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <Label   Grid.Column="8" Grid.Row="1" Content="Phone #"     HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
-            <TextBox Grid.Column="9" Grid.Row="1" x:Name="TextBoxPhone" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
+            <Label   Grid.Column="1" Grid.Row="2" Content="Last Name:"  HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
+            <Label   Grid.Column="1" Grid.Row="3" Content="License #"   HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
+            <Label   Grid.Column="1" Grid.Row="4" Content="Phone #"     HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
+            <Label   Grid.Column="1" Grid.Row="5" Content="E-Mail"      HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="100" />
+            <Label   Grid.Column="1" Grid.Row="6" Content="Street"      HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100"/>
+            <Label   Grid.Column="1" Grid.Row="7" Content="City"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            <Label   Grid.Column="1" Grid.Row="8" Content="State"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            <Label   Grid.Column="1" Grid.Row="9" Content="Zip"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            
+            <!--COL 2-->
+            <TextBox Grid.Column="2" Grid.Row="1" x:Name="TBFName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="2" x:Name="TBLName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="3" x:Name="TBID"    HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="4" x:Name="TBPhone" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="5" x:Name="TBEmail" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="6" x:Name="TBStreet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" />
+            <TextBox Grid.Column="2" Grid.Row="7" x:Name="TBCity"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
+            <TextBox Grid.Column="2" Grid.Row="8" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
+            <TextBox Grid.Column="2" Grid.Row="9" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
 
-            <!--ROW 2-->
-            <Label   Grid.Column="1" Grid.Row="2" Content="Street"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="100"/>
-            <TextBox Grid.Column="2" Grid.Row="2" x:Name="TextBoxStreet" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Grid.ColumnSpan="2"/>
-            <Label   Grid.Column="4" Grid.Row="2" Content="City"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <TextBox Grid.Column="5" Grid.Row="2" x:Name="TextBoxCity"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <Label   Grid.Column="6" Grid.Row="2" Content="State"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <TextBox Grid.Column="7" Grid.Row="2" x:Name="TextBoxState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <Label   Grid.Column="8" Grid.Row="2" Content="Zip"          HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <TextBox Grid.Column="9" Grid.Row="2" x:Name="TextBoxZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-
-
-            <!--ROW 3-->
-            <Label   Grid.Column="1" Grid.Row="3" Content="Room"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <TextBox Grid.Column="2" Grid.Row="3" x:Name="TextBofRoom"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            <Label Grid.Column="3" Grid.Row="1" Width="555"/>
+            
+            <!--COL 3-->
+            <Label   Grid.Column="4" Grid.Row="1" Content="Room"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            <TextBox Grid.Column="5" Grid.Row="1" x:Name="TextBofRoom"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
  
-            <!--ROW 4 -->
+            <!--COL 4 -->
 
             <!--ROW 5-->
-            <ListBox Grid.Column="2" Grid.Row="4" x:Name="ListViewNames"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="200" Width="800" Grid.ColumnSpan="8" />
+            <ListBox Grid.Column="2" Grid.Row="10" x:Name="ListViewNames"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="auto" Width="auto" Grid.ColumnSpan="2" />
         </Grid>
     </StackPanel>
 </Window>
