@@ -33,8 +33,7 @@ namespace bestsixapp
             rect.StrokeThickness = 2;
             return rect;
         }
-      
-   
+        
         
     }
 }

@@ -24,20 +24,28 @@ namespace bestsixapp
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Closed += new EventHandler(MainWindow_Closed);
         }
 
         private void RoomClick(object sender, RoutedEventArgs e)
         {
             RoomMake roomWindow = new RoomMake();
-            roomWindow.Show();
+            roomWindow.ShowDialog();
             
         }
 
         private void CustomerClick(object sender, RoutedEventArgs e)
         {
             Check checkWindow = new Check();
-            checkWindow.Show();
+            checkWindow.ShowDialog();
+        }
+
+        protected void MainWindow_Closed(object sender, EventArgs args)
+        {
+
+            App.Current.Shutdown();
+
+      
         }
 
 
