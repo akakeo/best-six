@@ -48,5 +48,10 @@ namespace bestsixapp
                     .ToList();
             }
         }
+
+        private void ListViewNames_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,26 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
       
-      Title="Page1" Background="#FF6A6A6A">
-    <StackPanel>
+      Title="Customer Room Registration" Background="#FF6A6A6A">
+    <!-- Stack Panel with 2 Grids aligned horizontally -->
+    <StackPanel Orientation="Horizontal" >
         <Grid>
+            <!-- GRID 1-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MaxWidth="20"  />
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition MaxWidth="20"  />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"  />
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -51,7 +44,7 @@
             <Label   Grid.Column="1" Grid.Row="7" Content="City"        HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
             <Label   Grid.Column="1" Grid.Row="8" Content="State"       HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
             <Label   Grid.Column="1" Grid.Row="9" Content="Zip"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            
+            <Button  Grid.Column="1" Grid.Row="11" Content="Check-in"/>
             <!--COL 2-->
             <TextBox Grid.Column="2" Grid.Row="1" x:Name="TBFName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
             <TextBox Grid.Column="2" Grid.Row="2" x:Name="TBLName" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="25" Width="200" />
@@ -63,16 +56,32 @@
             <TextBox Grid.Column="2" Grid.Row="8" x:Name="TBState"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
             <TextBox Grid.Column="2" Grid.Row="9" x:Name="TBZip"    HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
 
-            <Label Grid.Column="3" Grid.Row="1" Width="555"/>
-            
-            <!--COL 3-->
-            <Label   Grid.Column="4" Grid.Row="1" Content="Room"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
-            <TextBox Grid.Column="5" Grid.Row="1" x:Name="TextBofRoom"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
- 
-            <!--COL 4 -->
 
-            <!--ROW 5-->
-            <ListBox Grid.Column="2" Grid.Row="10" x:Name="ListViewNames"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="auto" Width="auto" Grid.ColumnSpan="2" />
+            <Button  Grid.Column="2" Grid.Row="11" Content="Clear" Width="100"/>
+        </Grid>
+
+        <Grid>
+            <!-- GRID 2-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition MaxWidth="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"  />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!--COL 1 - Spacer - GRID2 Room Information-->
+            <Label Grid.Column="1" Grid.Row="1" Content="ROOM CONTENTS GO HERE" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
+            <Label Grid.Column="1" Grid.Row="2" Content="CONTINUED ROOM CONTENTS" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="200"/>
+
+            <!--COL 2 - Labels -->
+            <Label   Grid.Column="2" Grid.Row="1" Content="Room"         HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+            <TextBox Grid.Column="2" Grid.Row="2" x:Name="TextBofRoom"   HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="100"/>
+
         </Grid>
     </StackPanel>
 </Window>
