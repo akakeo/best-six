@@ -40,6 +40,12 @@ namespace bestsixapp
             checkWindow.Show();
         }
 
+        private void CheckOutClick(object sender, RoutedEventArgs e)
+        {
+            CheckOut checkOutWindow = new CheckOut();
+            checkOutWindow.Show();
+        }
+
 
     }
 

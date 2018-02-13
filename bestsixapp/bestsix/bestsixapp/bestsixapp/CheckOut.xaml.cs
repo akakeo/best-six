@@ -23,5 +23,9 @@ namespace bestsixapp
         {
             InitializeComponent();
         }
+
+        /* 
+         Needs to identify the corresponding information in the database and change some state for that member that they are checked out.
+         */
     }
 }

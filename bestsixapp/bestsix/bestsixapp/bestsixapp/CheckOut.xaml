@@ -6,17 +6,53 @@
         xmlns:local="clr-namespace:bestsixapp"
         mc:Ignorable="d"
         Title="CheckOut" Height="800" Width="800">
-    <Grid>
+    <Grid RenderTransformOrigin="0.281,0.578">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="35*"/>
             <ColumnDefinition Width="66*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="640*"/>
-            <RowDefinition Height="32"/>
-            <RowDefinition Height="101*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+            <RowDefinition Height="453*"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="89*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Grid.Row="1">Submit</Button>
+        <Label Grid.Column="1" Grid.Row="3" Content="First Name:"/>
+        <Label Grid.Column="1" Grid.Row="4" Content="Last Name:"/>
+        <Label Grid.Column="1" Grid.Row="5" Content="Drivers License #:"/>
+        <Label Grid.Column="1" Grid.Row="6" Content="Phone #:"/>
+        <Label Grid.Column="1" Grid.Row="7" Content="E-Mail:"/>
+        <Label Grid.Column="1" Grid.Row="8" Content="Home Address:"/>
+        <Label Grid.Column="1" Grid.Row="9" Content="City:"/>
+        <Label Grid.Column="1" Grid.Row="10" Content="State:"/>
+        <Label Grid.Column="1" Grid.Row="11" Content="ZIP:"/>
+
+        <TextBox Grid.Column="2" Grid.Row="3"/>
+        <TextBox Grid.Column="2" Grid.Row="4"/>
+        <TextBox Grid.Column="2" Grid.Row="5"/>
+        <TextBox Grid.Column="2" Grid.Row="6"/>
+        <TextBox Grid.Column="2" Grid.Row="7"/>
+        <TextBox Grid.Column="2" Grid.Row="8"/>
+        <TextBox Grid.Column="2" Grid.Row="9"/>
+        <TextBox Grid.Column="2" Grid.Row="10"/>
+        <TextBox Grid.Column="2" Grid.Row="11"/>
+        <Button Grid.Column="2" Grid.Row="13" Content="Submit"/>
+
+
+
     </Grid>
 </Window>
