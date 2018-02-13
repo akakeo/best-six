@@ -20,7 +20,7 @@ namespace bestsixapp
     public partial class RoomMake : Window
     {
         private bool isEdit = false;
-        
+        List<object> Rooms = new List<object>();
         public RoomMake()
         {
             InitializeComponent();
@@ -29,19 +29,23 @@ namespace bestsixapp
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
         {
-            Rectangle rect = new Rectangle();
-            rect.Fill = new SolidColorBrush(Colors.AntiqueWhite);
-            rect.Stroke = new SolidColorBrush(Colors.Black);
-            rect.Height = this.Height/10;
-            rect.Width = this.Width/10;
-            rect.StrokeThickness = 2;
-            // here
-           
-            rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
-            rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
-            rect.MouseMove += rect_MouseMove;
-            
-            RoomCanvas.Children.Add(rect);
+            //create room object
+            if (isEdit)
+            {
+                //create object
+                Room room = new Room(this.Width, this.Height);
+                //cast object
+                var rect = (Rectangle)room.makeRoom();
+                //tract mouse events
+                rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
+                rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;        
+                rect.MouseMove += rect_MouseMove;
+                //add room object to room list
+                Rooms.Add(rect);
+                //add object to canvas
+                RoomCanvas.Children.Add(rect);
+                
+            }
         }
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -49,6 +53,7 @@ namespace bestsixapp
             rect.CaptureMouse();
         }
 
+       
 
         private void rect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -65,11 +70,17 @@ namespace bestsixapp
             var mousePos = e.GetPosition(RoomCanvas);
 
             // center the rect on the mouse
-                double left = mousePos.X - (rect.ActualWidth / 2);
-                double top = mousePos.Y - (rect.ActualHeight / 2);
+            double left = mousePos.X - (rect.ActualWidth / 2);
+            double top = mousePos.Y - (rect.ActualHeight / 2);
+            Console.WriteLine(this.ActualHeight);
+            Console.WriteLine(this.ActualHeight - rect.ActualHeight/2);
+            Console.WriteLine(top);
             if (isEdit)
             {
                 if (left < 0) left = 0;
+                if (left > this.ActualWidth - rect.ActualWidth*1.16) left = this.ActualWidth - rect.ActualWidth*1.16;
+                if (top < 0) top = 0;
+                if (top > this.ActualHeight - rect.ActualHeight*2.45) top = this.ActualHeight - rect.ActualHeight*2.45;
                 Canvas.SetLeft(rect, left);
 
                 Canvas.SetTop(rect, top);
@@ -80,13 +91,14 @@ namespace bestsixapp
         {
             if (EditRoomButton.Content.ToString() == "Edit Rooms")
             {
-
+                //Change button to finish and enable edit
                 EditRoomButton.Padding = new Thickness(16.7);
                 EditRoomButton.Content = "Finish";
                 isEdit = true;
             }
             else
             {
+                //change button to edit rooms and disable edit
                 EditRoomButton.Content = "Edit Rooms";
                 EditRoomButton.Padding = new Thickness(2);
                 isEdit = false;
