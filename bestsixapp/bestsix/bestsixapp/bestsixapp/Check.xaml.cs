@@ -25,13 +25,13 @@ namespace bestsixapp
         {
             InitializeComponent();
 
-            RefreshList();
+            RefreshList(); 
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                dbContext.Customers.Add(new Customer { ID = Int32.Parse(TextBoxID.Text), FirstName = TextBoxFName.Text });
+               // dbContext.Customers.Add(new Customer { ID = Int32.Parse(TextBoxID.Text), FirstName = TextBoxFName.Text });
                 dbContext.SaveChanges();
 
                 RefreshList();
