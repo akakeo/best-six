@@ -40,6 +40,7 @@ namespace bestsixapp
                 rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
                 rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;        
                 rect.MouseMove += rect_MouseMove;
+                EditRoomInfo();
                 //add room object to room list
                 Rooms.Add(rect);
                 //add object to canvas
@@ -104,7 +105,12 @@ namespace bestsixapp
                 isEdit = false;
             }
         }
-           
+
+        private void EditRoomInfo()
+        {
+            RoomInfo newRoomInfo = new RoomInfo();
+            newRoomInfo.ShowDialog();
+        }
     }
 }
 
