@@ -31,7 +31,7 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                dbContext.Customers.Add(new Customer { ID = Int32.Parse(TextBoxID.Text), FirstName = TextBoxFName.Text });
+                //dbContext.Customers.Add(new Customer { ID = Int32.Parse(TextBoxID.Text), FirstName = TextBoxFName.Text });
                 dbContext.SaveChanges();
 
                 RefreshList();
