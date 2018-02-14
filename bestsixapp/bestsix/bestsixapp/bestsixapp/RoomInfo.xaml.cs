@@ -23,7 +23,6 @@ namespace bestsixapp
     /// </summary>
     public partial class RoomInfo : Window
     {
-      
         public RoomInfo()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace bestsixapp
         {
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                //add datat to database
+                //add data to database
                 dbContext.Rooms.Add(new Room {RoomNo = Int32.Parse(TextBoxRoomNo.Text), BedType = TextBoxBedType.Text,
                     NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = TextBoxSmoking.Text  });
                 //save changes
@@ -45,7 +44,7 @@ namespace bestsixapp
         //method for cancel
         public void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
