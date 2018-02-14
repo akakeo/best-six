@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bestsixapp"
+    "\\bestsixapp",
+    "\\bestsixapp\\bestsix",
+    "\\bestsixapp\\bestsix\\bestsixapp",
+    "\\bestsixapp\\bestsix\\bestsixapp\\bestsixapp"
   ],
-  "SelectedNode": "\\bestsixapp\\bestsix",
+  "SelectedNode": "\\bestsixapp\\bestsix\\bestsixapp\\bestsixapp\\RoomInfo.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

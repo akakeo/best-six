@@ -19,13 +19,12 @@ namespace bestsixapp
     /// </summary>
     public partial class RoomMake : Window
     {
+        RoomData room;
         private bool isEdit = false;
-        private bool isCancelled = false;
-        List<RoomData> Rooms = new List<RoomData>();
         public RoomMake()
         {
             InitializeComponent();
-            
+
         }
 
         private void CreateRoomClick(object sender, RoutedEventArgs e)
@@ -33,31 +32,14 @@ namespace bestsixapp
             //create room object
             if (isEdit)
             {
-                if (!isCancelled)
-                {
-                    //create object roomData
-                    RoomData room = new RoomData();
-                    //cast object
-                    var rect = (Rectangle)room.makeRoom();
-                    //tract mouse events
-                    rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
-                    rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;        
-                    rect.MouseMove += rect_MouseMove;
-                    EditRoomInfo();
-                    //add room object to room list
-                    Rooms.Add(room);
-                    //add object to canvas
-                    RoomCanvas.Children.Add(rect);
-                    isCancelled = false;
-                    
-                }
+                EditRoomInfo();
             }
         }
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var rect = (Rectangle)sender;
             rect.CaptureMouse();
-        } 
+        }
 
 
         private void rect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -78,15 +60,20 @@ namespace bestsixapp
             double left = mousePos.X - (rect.ActualWidth / 2);
             double top = mousePos.Y - (rect.ActualHeight / 2);
             if (isEdit)
-            {
+            {//boundary for left side
                 if (left < 0) left = 0;
-                if (left > this.ActualWidth - rect.ActualWidth*1.16) left = this.ActualWidth - rect.ActualWidth*1.16;
+                //boundary for right side
+                if (left > this.ActualWidth - rect.ActualWidth * 1.16) left = this.ActualWidth - rect.ActualWidth * 1.16;
+                //boundary for top
                 if (top < 0) top = 0;
-                if (top > this.ActualHeight - rect.ActualHeight*2.58) top = this.ActualHeight - rect.ActualHeight*2.58;
+                //boundary for bottom
+                if (top > this.ActualHeight - rect.ActualHeight * 2.58) top = this.ActualHeight - rect.ActualHeight * 2.58;
                 Canvas.SetLeft(rect, left);
                 Canvas.SetTop(rect, top);
+                room.SetLeft(Canvas.GetLeft(rect));
+                room.SetTop(Canvas.GetTop(rect));
             }
-           
+
         }
 
         private void EditRoomClick(object sender, RoutedEventArgs e)
@@ -110,14 +97,33 @@ namespace bestsixapp
         private void EditRoomInfo()
         {
             RoomInfo newRoomInfo = new RoomInfo();
-            newRoomInfo.ShowDialog();
-            newRoomInfo.CancelButton.Click += ClickEventHandler;
+            newRoomInfo.Show();
+            newRoomInfo.SaveButton.Click += SaveClickEventHandler;
         }
-        private void ClickEventHandler(object sender, RoutedEventArgs e) => setCancel(); //call cancel method
 
-        public void setCancel() =>
-            //set bool cancel to true
-            isCancelled = true;
+
+        private void SaveClickEventHandler(object sender, RoutedEventArgs e) => CreateRoom(); //call cancel method
+
+        public void CreateRoom()
+        {
+            if (isEdit)
+            {
+                room = new RoomData();
+                //cast object
+                var rect = (Rectangle)room.makeRoom();
+                //tract mouse events
+                rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
+                rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;
+                rect.MouseMove += rect_MouseMove;
+                //add room object to room list
+                //add object to canvas
+                RoomCanvas.Children.Add(rect);
+                room.SetLeft(Canvas.GetLeft(rect));
+                room.SetTop(Canvas.GetTop(rect));
+                Console.WriteLine(Canvas.GetLeft(rect));
+                Console.WriteLine(Canvas.GetTop(rect));
+            }
+        }
     }
 }
 
