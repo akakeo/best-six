@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Database;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace bestsixapp
 {
@@ -19,6 +23,7 @@ namespace bestsixapp
     /// </summary>
     public partial class RoomInfo : Window
     {
+      
         public RoomInfo()
         {
             InitializeComponent();
@@ -26,12 +31,21 @@ namespace bestsixapp
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                //add datat to database
+                dbContext.Rooms.Add(new Room {RoomNo = Int32.Parse(TextBoxRoomNo.Text), BedType = TextBoxBedType.Text,
+                    NoOfBeds = Int32.Parse(TextBoxNoOfBeds.Text), Price = Double.Parse(TextBoxPrice.Text), Smoking = TextBoxSmoking.Text  });
+                //save changes
+                dbContext.SaveChanges();
+                //close screen
+                Close();
+            }
         }
-
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        //method for cancel
+        public void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

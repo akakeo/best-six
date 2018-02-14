@@ -20,7 +20,8 @@ namespace bestsixapp
     public partial class RoomMake : Window
     {
         private bool isEdit = false;
-        List<object> Rooms = new List<object>();
+        private bool isCancelled = false;
+        List<RoomData> Rooms = new List<RoomData>();
         public RoomMake()
         {
             InitializeComponent();
@@ -32,29 +33,32 @@ namespace bestsixapp
             //create room object
             if (isEdit)
             {
-                //create object
-                Room room = new Room(this.Width, this.Height);
-                //cast object
-                var rect = (Rectangle)room.makeRoom();
-                //tract mouse events
-                rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
-                rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;        
-                rect.MouseMove += rect_MouseMove;
-                EditRoomInfo();
-                //add room object to room list
-                Rooms.Add(rect);
-                //add object to canvas
-                RoomCanvas.Children.Add(rect);
-                
+                if (!isCancelled)
+                {
+                    //create object roomData
+                    RoomData room = new RoomData();
+                    //cast object
+                    var rect = (Rectangle)room.makeRoom();
+                    //tract mouse events
+                    rect.MouseLeftButtonDown += rect_MouseLeftButtonDown;
+                    rect.MouseLeftButtonUp += rect_MouseLeftButtonUp;        
+                    rect.MouseMove += rect_MouseMove;
+                    EditRoomInfo();
+                    //add room object to room list
+                    Rooms.Add(room);
+                    //add object to canvas
+                    RoomCanvas.Children.Add(rect);
+                    isCancelled = false;
+                    
+                }
             }
         }
         private void rect_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var rect = (Rectangle)sender;
             rect.CaptureMouse();
-        }
+        } 
 
-       
 
         private void rect_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -73,19 +77,16 @@ namespace bestsixapp
             // center the rect on the mouse
             double left = mousePos.X - (rect.ActualWidth / 2);
             double top = mousePos.Y - (rect.ActualHeight / 2);
-            Console.WriteLine(this.ActualHeight);
-            Console.WriteLine(this.ActualHeight - rect.ActualHeight/2);
-            Console.WriteLine(top);
             if (isEdit)
             {
                 if (left < 0) left = 0;
                 if (left > this.ActualWidth - rect.ActualWidth*1.16) left = this.ActualWidth - rect.ActualWidth*1.16;
                 if (top < 0) top = 0;
-                if (top > this.ActualHeight - rect.ActualHeight*2.45) top = this.ActualHeight - rect.ActualHeight*2.45;
+                if (top > this.ActualHeight - rect.ActualHeight*2.58) top = this.ActualHeight - rect.ActualHeight*2.58;
                 Canvas.SetLeft(rect, left);
-
                 Canvas.SetTop(rect, top);
             }
+           
         }
 
         private void EditRoomClick(object sender, RoutedEventArgs e)
@@ -110,7 +111,13 @@ namespace bestsixapp
         {
             RoomInfo newRoomInfo = new RoomInfo();
             newRoomInfo.ShowDialog();
+            newRoomInfo.CancelButton.Click += ClickEventHandler;
         }
+        private void ClickEventHandler(object sender, RoutedEventArgs e) => setCancel(); //call cancel method
+
+        public void setCancel() =>
+            //set bool cancel to true
+            isCancelled = true;
     }
 }
 

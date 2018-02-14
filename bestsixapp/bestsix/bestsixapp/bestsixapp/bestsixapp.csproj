@@ -134,7 +134,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Room.cs" />
+    <Compile Include="RoomData.cs" />
     <Compile Include="RoomInfo.xaml.cs">
       <DependentUpon>RoomInfo.xaml</DependentUpon>
     </Compile>
